@@ -1,0 +1,36 @@
+/* -------------------------------------------------
+   public/style.css  –  light custom tweaks on top
+   of Tailwind’s utility classes
+   ------------------------------------------------- */
+
+/* Smooth transitions for form elements */
+input,
+select,
+button {
+  transition: all 0.3s ease;
+}
+
+/* Cleaner focus outline */
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6aa; /* blue ring */
+}
+
+/* Subtle button hover pop */
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* Message text that fades in/out nicely */
+.message {
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: nicer default font */
+body {
+  font-family: 'Inter', sans-serif;
+}

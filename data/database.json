@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "email": "driver1@example.com",
+      "password": "123456",
+      "role": "driver"
+    },
+    {
+      "email": "passenger1@example.com",
+      "password": "12345",
+      "role": "driver"
+    },
+    {
+      "email": "passenger2@example.com",
+      "password": "12345",
+      "role": "passenger"
+    },
+    {
+      "email": "passenger3@example.com",
+      "password": "12345",
+      "role": "passenger"
+    },
+    {
+      "email": "driver3@example.com",
+      "password": "12345",
+      "role": "driver"
+    },
+    {
+      "email": "passenger5@example.com",
+      "password": "12345",
+      "role": "passenger"
+    },
+    {
+      "email": "driver5@example.com",
+      "password": "12345",
+      "role": "driver"
+    },
+    {
+      "email": "passenger10@example.com",
+      "password": "1234",
+      "role": "passenger"
+    },
+    {
+      "email": "driver10@example.com",
+      "password": "1234",
+      "role": "driver"
+    }
+  ],
+  "rides": [
+    {
+      "id": "1749533627857",
+      "passengerEmail": "passenger2@example.com",
+      "pickup": "bsks",
+      "destination": "askahc",
+      "status": "Accepted",
+      "driverEmail": "passenger1@example.com"
+    },
+    {
+      "id": "1749545349001",
+      "passengerEmail": "passenger3@example.com",
+      "pickup": "xperial mall",
+      "destination": "nerul lp",
+      "status": "Accepted",
+      "driverEmail": "driver3@example.com"
+    },
+    {
+      "id": "1749545397490",
+      "passengerEmail": "passenger3@example.com",
+      "pickup": "elitra f",
+      "destination": "sies gst",
+      "status": "Accepted",
+      "driverEmail": "driver5@example.com"
+    },
+    {
+      "id": "1749545694798",
+      "passengerEmail": "passenger3@example.com",
+      "pickup": "sdkvjnd",
+      "destination": "sdsjvbnjlf",
+      "status": "Accepted",
+      "driverEmail": "driver3@example.com"
+    },
+    {
+      "id": "1749546518059",
+      "passengerEmail": "passenger5@example.com",
+      "pickup": "ffdfgger",
+      "destination": "mmytththy",
+      "status": "Accepted",
+      "driverEmail": "driver10@example.com"
+    },
+    {
+      "id": "1749577791534",
+      "passengerEmail": "passenger10@example.com",
+      "pickup": "sies",
+      "destination": "parel",
+      "status": "Accepted",
+      "driverEmail": "driver10@example.com"
+    },
+    {
+      "id": "1749577806012",
+      "passengerEmail": "passenger10@example.com",
+      "pickup": "dfkhbdk",
+      "destination": "fkdhbvdkgb",
+      "status": "Accepted",
+      "driverEmail": "driver10@example.com"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passenger Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-4">Passenger Dashboard</h1>
+
+  <!-- Ride request form -->
+  <div class="bg-white p-4 rounded-xl shadow mb-6 max-w-lg">
+    <h2 class="font-semibold mb-2">Request a Ride</h2>
+    <div class="space-y-2">
+      <input id="pickup" placeholder="Pickup Location"
+             class="w-full px-3 py-2 border rounded">
+      <input id="destination" placeholder="Destination"
+             class="w-full px-3 py-2 border rounded">
+      <button id="requestBtn"
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Request</button>
+      <p id="msg" class="text-sm mt-1"></p>
+    </div>
+  </div>
+
+  <!-- Your rides -->
+  <div class="bg-white p-4 rounded-xl shadow max-w-4xl">
+    <h2 class="font-semibold mb-2">Your Ride Requests</h2>
+    <table class="min-w-full text-sm" id="ridesTable">
+      <thead class="bg-gray-200">
+        <tr><th class="px-2 py-1">Pickup</th><th class="px-2 py-1">Destination</th>
+            <th class="px-2 py-1">Status</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+<script>
+const user = JSON.parse(localStorage.getItem('user')) || {};
+if (user.role !== 'passenger') location.href = 'index.html';
+
+const msg = document.getElementById('msg');
+function message(t, good){ msg.textContent=t; msg.className=good?'text-green-600':'text-red-600'; }
+
+async function loadRides(){
+  const res = await fetch('/api/rides?passenger='+ encodeURIComponent(user.email));
+  const rides = await res.json();
+  const tbody = document.querySelector('#ridesTable tbody');
+  tbody.innerHTML = '';
+  rides.forEach(r=>{
+    tbody.insertAdjacentHTML('beforeend',
+      `<tr class="border-t"><td class="px-2 py-1">${r.pickup}</td>
+        <td class="px-2 py-1">${r.destination}</td>
+        <td class="px-2 py-1">${r.status}</td></tr>`);
+  });
+}
+
+document.getElementById('requestBtn').onclick = async () =>{
+  const pickup = document.getElementById('pickup').value.trim();
+  const dest   = document.getElementById('destination').value.trim();
+  if(!pickup||!dest){ message('Fill both fields',false); return;}
+  const res = await fetch('/api/rides',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ passengerEmail:user.email, pickup, destination:dest })
+  });
+  const d = await res.json(); message(d.message,res.ok);
+  if(res.ok){ document.getElementById('pickup').value=''; document.getElementById('destination').value=''; }
+  loadRides();
+};
+
+loadRides();
+setInterval(loadRides, 5000);   // simple polling every 5 s
+</script>
+</body>
+</html>
