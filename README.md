@@ -48,7 +48,7 @@ A beginner-friendly *Node.js + Express* application that simulates a ride-hailin
 2. **Open your browser and go to:**
    
    http://localhost:3000
-   ```
+
 
 Driver-for-Hire-Aggregator-App/
 ├── data/
